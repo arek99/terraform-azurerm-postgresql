@@ -22,13 +22,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+     - uses: actions/checkout@v2.3.2
+     - uses: Azure/login@v1
+       with:
+         creds: ${{secrets.AZURE_CREDENTIALS}}
 
-      # Runs a single command using the runners shell
-      - name: Azure PostgreSQL Action
-        uses: Azure/postgresql@v1
-        with:
+     # Runs a single command using the runners shell
+     - name: Azure PostgreSQL Action
+       uses: Azure/postgresql@v1
+       with:
           # Server name of Azure DB for PostgreSQL. Example: fabrikam.postgres.database.azure.com
           server-name: rekpostlab.postgres.database.azure.com
           # The connection string, including authentication information, for the Azure PostgreSQL Server. Please provide psql connection string. Example: psql "host={host} port={port} dbname={your_database} user={user} password={your_password} sslmode=require"
