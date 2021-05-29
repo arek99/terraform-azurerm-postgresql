@@ -1,16 +1,19 @@
 variable "resource_group_name" {
   description = "The name of the resource group in which to create the PostgreSQL Server. Changing this forces a new resource to be created."
   type        = string
+  default     = "rekpostneu"
 }
 
 variable "location" {
   description = "Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created."
   type        = string
+  default     = "northeurope"
 }
 
 variable "server_name" {
   description = "Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created."
   type        = string
+  default     = "rekpsqlsingle"
 }
 
 variable "sku_name" {
@@ -22,7 +25,7 @@ variable "sku_name" {
 variable "storage_mb" {
   description = "Max storage allowed for a server. Possible values are between 5120 MB(5GB) and 1048576 MB(1TB) for the Basic SKU and between 5120 MB(5GB) and 4194304 MB(4TB) for General Purpose/Memory Optimized SKUs."
   type        = number
-  default     = 102400
+  default     = 5120
 }
 
 variable "backup_retention_days" {
@@ -40,17 +43,19 @@ variable "geo_redundant_backup_enabled" {
 variable "administrator_login" {
   description = "The Administrator Login for the PostgreSQL Server. Changing this forces a new resource to be created."
   type        = string
+  default     = "psqladmin"
 }
 
 variable "administrator_password" {
   description = "The Password associated with the administrator_login for the PostgreSQL Server."
   type        = string
+  default     = "Aerre1442??"
 }
 
 variable "server_version" {
   description = "Specifies the version of PostgreSQL to use. Valid values are 9.5, 9.6, and 10.0. Changing this forces a new resource to be created."
   type        = string
-  default     = "9.5"
+  default     = "11"
 }
 
 variable "ssl_enforcement_enabled" {
@@ -68,7 +73,7 @@ variable "public_network_access_enabled" {
 variable "db_names" {
   description = "The list of names of the PostgreSQL Database, which needs to be a valid PostgreSQL identifier. Changing this forces a new resource to be created."
   type        = list(string)
-  default     = []
+  default     = [my_db1,my_db2]
 }
 
 variable "db_charset" {
