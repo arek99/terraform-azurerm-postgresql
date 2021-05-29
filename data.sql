@@ -1,5 +1,5 @@
 CREATE DATABASE mypgsqldb;
-
+\c mypgsqldb
 CREATE TABLE inventory (
 	id serial PRIMARY KEY, 
 	name VARCHAR(50), 
