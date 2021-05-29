@@ -27,15 +27,11 @@ jobs:
        with:
          creds: ${{secrets.AZURE_CREDENTIALS}}
 
-     # Runs a single command using the runners shell
-     - name: Azure PostgreSQL Action
-       uses: Azure/postgresql@v1
+    # Runs a single command using the runners shell
+     - uses: azure/postgresql@v1
        with:
-          # Server name of Azure DB for PostgreSQL. Example: fabrikam.postgres.database.azure.com
-          server-name: rekpostlab.postgres.database.azure.com
-          # The connection string, including authentication information, for the Azure PostgreSQL Server. Please provide psql connection string. Example: psql "host={host} port={port} dbname={your_database} user={user} password={your_password} sslmode=require"
-          connection-string: psql "host=rekpostlab.postgres.database.azure.com port=5432 dbname={your_database} user=sqladmin@rekpostlab password=Aerre1442Compl8?? sslmode=require"
-          # Path to PL/SQL script file to deploy. To specify multiple files, use the regex syntax : *.sql or folder/x/<regex>.sql
-          plsql-file: data.sql
+        server-name: rekpostlab.postgres.database.azure.com
+        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+        sql-file: './data.sql'  
   
         
