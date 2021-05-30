@@ -32,6 +32,6 @@ jobs:
        with:
         server-name: rekpostlab.postgres.database.azure.com
         connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
-        plsql-file: wwi.sql
+        plsql-file: sales.sql
   
         
