@@ -27,11 +27,16 @@ jobs:
        with:
          creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    # Runs a single command using the runners shell. Connection use posgres as defualt db. The data.sql Create the DB and connect to it. 
-     - uses: azure/postgresql@v1
-       with:
-        server-name: rekpostlab.postgres.database.azure.com
+    # Runs pg_restore 
+
+     - uses: azure/postgresql@v1    
+     - run: pg_restore -v --no-owner --dbname=wwi2 wide_world_importers_pg.dump    
+       env:
+        # use localhost for the host here because we are running the job on the VM.
+        # If we were running the job on in a container this would be postgres
+        POSTGRES_HOST:  rekpostlab.postgres.database.azure.com
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} # get randomly assigned published port
         connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
-        plsql-file: pg_restore -v --no-owner --dbname=wwi2 wide_world_importers_pg.dump
+        
   
         
