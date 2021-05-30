@@ -1,5 +1,5 @@
 CREATE DATABASE rekadw;
-\c adw
+\c rekadw
 --
 -- PostgreSQL database dump
 --
