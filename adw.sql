@@ -34,7 +34,7 @@ COMMENT ON SCHEMA production
     IS 'Contains objects related to products, inventory, and manufacturing.';
     
 CREATE SCHEMA public
-    AUTHORIZATION azure_superuser;
+    AUTHORIZATION sqladmin;
 
 COMMENT ON SCHEMA public
     IS 'standard public schema';    
