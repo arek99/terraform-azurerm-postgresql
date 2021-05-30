@@ -27,7 +27,7 @@ jobs:
        with:
          creds: ${{secrets.AZURE_CREDENTIALS}}
 
-    # Runs a single command using the runners shell. Connection use posgres as defualt db
+    # Runs a single command using the runners shell. Connection use posgres as defualt db. The data.sql Create the DB and connect to it. 
      - uses: azure/postgresql@v1
        with:
         server-name: rekpostlab.postgres.database.azure.com
