@@ -27,6 +27,12 @@ SET default_tablespace = '';
 -- Name: product; Type: TABLE; Schema: production; Owner: sqladmin
 --
 
+CREATE SCHEMA production
+    AUTHORIZATION sqladmin;
+
+COMMENT ON SCHEMA production
+    IS 'Contains objects related to products, inventory, and manufacturing.';
+
 CREATE TABLE production.product (
     productid integer NOT NULL,
     name public."Name" NOT NULL,
